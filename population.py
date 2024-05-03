@@ -4,7 +4,8 @@ C. Harrington, P. Nguyen
 Last Updated 5/2/2024
 This modules contains data from the world census as found on wikipedia
 and combines that information with world caloric information and 
-basic population modeling provide a interseting measurement of suffering.
+basic population modeling provide a interesting measurement of suffering.
+[https://github.com/charrington1521/PopulationDynamicsModeling]
 '''
 
 #====================================[IMPORTS]=================================
