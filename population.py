@@ -11,10 +11,11 @@ basic population modeling provide a interesting measurement of suffering.
 #====================================[IMPORTS]=================================
 
 import numpy as np
+from collections.abc import Callable
 
 from os.path import basename, exists
 
-def download(url):
+def download(url: str) -> None:
     '''
     Downloads a file found at the given url
         Provided by ??????
@@ -85,7 +86,7 @@ system = System(t_0 = t_0,
 
 #=================================[METHODS]====================================
 
-def carrying_capacity(system):
+def carrying_capacity(system: System) -> float:
     '''
     Calculates the carrying capacity of a system which has 
         an alpha and beta
@@ -94,7 +95,7 @@ def carrying_capacity(system):
     K = -system.alpha / system.beta
     return K
 
-def growth_func_quad(t, pop, system):
+def growth_func_quad(t: int, pop: float, system: System) -> float:
     '''
     Logisitc growth model for population, requires 'alpha' and 'beta'
         in the given system. 
@@ -102,7 +103,7 @@ def growth_func_quad(t, pop, system):
     '''
     return system.alpha * pop + system.beta * pop**2
 
-def calculate_suffering(system, population):
+def calculate_suffering(system: System, population: float) -> float:
     '''
     Given a system and the current population (not in billions), uses calorie 
     information to calculate what percentage of calories people are missing 
@@ -116,7 +117,7 @@ def calculate_suffering(system, population):
     else:
         return 0
     
-def run_simulation(system, growth_func):
+def run_simulation(system: System, growth_func: Callable([int, float, System], float)):
     '''
     Given a system and a model for growth, runs a simulation 
     modified from: https://allendowney.github.io/ModSimPy/
